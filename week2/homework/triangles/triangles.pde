@@ -1,4 +1,3 @@
-
 class Triangle {
   PVector pos;
   float rotation;
@@ -7,8 +6,12 @@ class Triangle {
     pos = new PVector(x, y);
     rotation = 0;
   }
-
+  void faceTowards(float x, float y){
+     rotation= atan2(y-pos.y,x-pos.x)+HALF_PI; 
+  }
+  
   void draw() {
+  
     stroke(255, 0, 120);
     pushMatrix();
     translate(pos.x, pos.y);
@@ -38,6 +41,7 @@ void draw() {
   background(0);
 
   for (Triangle t : friends) {
+    t.faceTowards(mouseX,mouseY);
     t.draw();
   }
 }
